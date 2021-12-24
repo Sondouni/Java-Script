@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <script>
+       /*
+            var변수와 function은 호이스팅 현상이 일어나서
+            소스의 가장 위로 옮겨진다
+            (인접 스코프 시작지점으로 옮겨준다)
+       */
+       console.log(myName);
+       var myName = '홍길동';
+
+       function sum(){
+           console.log('sum : '+ddd);
+           var ddd = 'aaa';
+       }
+
+       sum();
+   </script> 
+</body>
+</html>

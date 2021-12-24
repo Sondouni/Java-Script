@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <script>
+       //function파라미터에 기본값(defualt) 주는방법
+       function sum(n1=1, n2=2,n3=3,n4=4){
+           console.log(n1+n2+n3+n4);
+       }
+       sum();
+       sum(10);
+       sum(10,20);
+       sum(10,20,30);
+       sum(10,20,30,40);
+
+       function mul(n1=null, n2=2,n3=3){
+            //null은 0으로 처리
+            console.log(n1*n2*n3)
+       }
+       mul();
+       mul(1.2,3);
+   </script> 
+</body>
+</html>

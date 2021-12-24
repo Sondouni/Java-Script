@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <script>
+       //가변인자 arguments[n] ->n번째 인자(파라미터를 가져옴)
+       function sum(){
+           console.log('len : '+arguments.length);
+           console.log(arguments[0]);
+           console.log(arguments[1]);
+           console.log(arguments[2]);
+           console.log(arguments[3]);
+           var sum1=0;
+           for(var i= 0;i<arguments.length;i++){
+                sum1 += arguments[i];
+           }
+           console.log('sum : '+ sum1);
+        }
+        sum(12,22,32);
+        sum(10,20,30);
+        sum(100,200,300,400,500)
+
+        
+   </script> 
+</body>
+</html>

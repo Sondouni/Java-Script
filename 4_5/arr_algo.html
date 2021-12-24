@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <script>
+       var joonwoostupid = [2,6,10,11,22,1,7,12,123,3,4,5];
+       //for each
+       var sum = 0;
+
+        function aa(val){
+            console.log(val);
+        }
+
+        joonwoostupid.forEach(aa);
+
+       var sum = 0;
+       joonwoostupid.forEach(function(val){
+           sum += val;
+       })
+       console.log('sum : '+sum);
+   </script> 
+</body>
+</html>
