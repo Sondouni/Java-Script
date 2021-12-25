@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <script>
+       //객체생성해서 노드에 값넣어주기 좋음
+       function elt(name,attr){
+           var node = document.createElement(name);
+           if(attr){
+               for(var item in attr){
+                   if(attr.hasOwnProperty(item)){//원래 가진 속성값인지(value,name...등 ) 새로 만들어낸 속성은 안됨
+                       node.setAttribute(item,attr[item]); // 노드에다가 속성을 추가
+                   }
+               }
+           }
+           return node;
+       }
+       /*
+            for(var _ in 객체){
+                객체안에있는 속성값을 가져옴(맴버필드 변수명)
+            }
+            객체일때는 맴버필드 명, 배열일때는 인덱스를 준다
+       */
+      function createIconEditor(parent ,nx,ny){
+          //color선택
+          var color = elt('input',{'type':'color'});
+          //모두삭제버튼
+          var clear = elt('input',{'type':'button',value : 'clear'});
+          //테이블
+          var table = elt('table');
+          table.style.borderCllapse = 'collapse';
+          table.style.marginTop = '5px';
+          
+          
+
+        var cells = [];
+        for(var r = 0;r<ny;r++){
+            var tr = elt('tr');
+            table.appendChild(tr);
+            for(var c = 0;c<nx;c++){
+                var td = elt('td');
+                cells.push(td);
+                tr.appendChild(td);
+                td.style.width = td.style.height = '15px';
+                td.style.border = '1px solid gray';
+                td.addEventListener('click',function(e){
+                    if(e.target.style.backgroundColor===''){
+                        e.target.style.backgroundColor = color.value;//e.target을 하면 이벤트에 걸려있는 element를 잡을수 있음.
+                    }else{
+                        e.target.style.backgroundColor = '';
+                    }
+                });
+                // 
+                td.addEventListener('drag',function(e){
+                    if(e.target.style.backgroundColor===''){
+                        e.target.style.backgroundColor = color.value;//e.target을 하면 이벤트에 걸려있는 element를 잡을수 있음.
+                    }else{
+                        e.target.style.backgroundColor = '';
+                    }
+                });
+            }
+        }
+
+        clear.addEventListener('click',function(e){
+            cells.forEach(function(item){
+                item.style.backgroundColor = '';
+            });
+        });
+        parent.appendChild(color);
+        parent.appendChild(clear);
+        parent.appendChild(table);
+      }
+      createIconEditor(document.body,16,16);
+   </script> 
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="container"></div>
+    <script>
+        var url = 'localhost:8090/board/cmt?iboard=28';
+        fetch(url).then(function(res){
+            return res.json();
+        }).then(function(data){
+            setData(data);
+        });
+        function setData(data){
+            var containerElem = document.querySelector('#container');
+            console.log(data);
+            
+            data.forEach(function(item){
+                var div = document.createElement('div');
+                div.innerHTML = `${item.title}`;
+                div.innerHTML = `${item.ctnt}`;
+                div.innerHTML = `${item.writerNm}`;
+
+                containerElem.append(div);
+                //appendChild 는 노드를 못넣는다
+            });
+        }
+    </script>
+</body>
+</html>

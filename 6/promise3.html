@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <script>
+       var num = 19;
+       var pro = new Promise(function(resolve,reject){
+           setTimeout(function(){
+                if(num>=10){
+                    console.log('---- resolve ----');
+                    var obj = {
+                        n1 :10,
+                        n2 :20,
+                    }
+                    resolve(obj);
+                }else{
+                    console.log('---- reject ----');
+                    reject(num);
+                }
+           },3000);
+            
+       });
+       //여기까지는 대기상태(pending)
+       pro.then(function(res){
+            console.log('then called');
+            console.log(`res.n1 : ${res.n1}`);//이행시 함수(fulfilled)
+            console.log(`res.n2 : ${res.n2}`);//이행시 함수(fulfilled)
+       }).catch(function(err){
+            console.log('catch called');
+            console.log(`err : ${err}`);//실패시 함수(rejsected)
+       });
+       //프로미스 resolve,reject에는 파라미터를 하나만 받아서, 여러값을 보내고싶으면 객체를 보낸다
+   </script> 
+</body>
+</html>

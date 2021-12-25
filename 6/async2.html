@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+        var button = document.querySelector('#button');
+        button.addEventListener(function(){
+
+        });
+        */
+        function fn1(){
+            setTimeout(function(){
+                return 10;
+            },1000);
+        }
+        function fn2(val){
+            setTimeout(function(){
+                console.log(val+30);
+            },1000);
+        }
+        var result = fn1();
+        console.log('result : '+result);//undefined
+        fn2(result);
+        //자바스크립트는 스레드가 1개밖에 없다.
+    </script>
+</body>
+</html>

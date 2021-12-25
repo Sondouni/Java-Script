@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="cards">
+       &hearts;하트는 <em>승려</em>라는 뜻입니다.
+    </div>
+   <script>
+       var cardsElem = document.querySelector('#cards');
+       cardsElem.innerHTML = '&diams;다이아는 <strong>상인</strong>이라는 뜻 입니다.'; //태그를 다 적용시켜줌
+       cardsElem.innerText = '&diams;다이아는 <strong>상인</strong>이라는 뜻 입니다.'; //문자열 그대로 작성, innerHTML을 한것이더라도 덮어쓴다
+       cardsElem.append('&hearts;하트는 <em>승려</em>라는 뜻입니다.'); //문자열 그대로 추가
+       cardsElem.prepend(' &hearts;하트는 <em>승려</em>라는 뜻입니다.'); //cardsElem앞에추가
+       cardsElem.appendChild(' &hearts;하트는 <em>승려</em>라는 뜻입니다.') // 에러(태그 객체만 사용가능)
+       
+   </script> 
+</body>
+</html>

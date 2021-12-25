@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="favorite">
+        <input type="checkbox" name="dog" value="pome">포메라이안<br>
+        <input type="checkbox" name="dog" value="dalma">달마시안<br>
+        <input type="checkbox" name="dog" value="bool">불독<br>
+    </form>
+    <button onclick="chk()">확인</button>
+   <script>
+       //없는 속성을 사용할수는 없다, 하지만 getAttribute를 사용하면 없는 속성을 만들어서 사용할수 있다.
+       var result = [];
+       var fm = document.querySelector('#favorite');
+       var list = fm.children;
+       console.log(list);
+       /*
+       for(var i =0;i<list.length;i++){
+           if(list[i].nodeName==='INPUT'&&list[i].type==='checkbox'){
+               result.push(list[i].getAttribute('value'));
+           }
+       }
+       */
+       function chk(){
+           var checkList = [];
+            for(var i =0;i<list.length;i++){
+                if(list[i].nodeName==='INPUT'&&list[i].type==='checkbox'){
+                    var checkResult = list[i].checked;
+                    console.log(checkResult);
+                    if(checkResult){
+                        checkList.push(list[i].getAttribute('value'));
+                    }
+                }
+            }
+            console.log(checkList.join(','));
+       }
+       console.log(result.join(','));//배열 변수에 join 메소드를 쓰고 파라미터로 구분자를 지으면 value값을 다 가져올수잇다.
+   </script> 
+</body>
+</html>

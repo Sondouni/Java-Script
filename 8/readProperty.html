@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <a id="school" href="https://www.google.com">google</a>
+   <script>
+       // property vs attribute 차이점
+       //attribute : html 문서상에서 적용된 속성 (문서상 (js제외)에서의 속성값)
+       //property : 실제로 랜더링 되어서 핸재 적용되어 있는 속성을 의미(웹에서의 속성값)
+       var anchor = document.querySelector('#school');
+       console.log(anchor.href);
+   </script> 
+</body>
+</html>

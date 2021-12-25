@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="getData()">자료 가져오기</button>
+    <div id="container"></div>
+   <script>
+        function getData(){
+            var url = 'https://picsum.photos/v2/list';
+            fetch(url).then(function(res){//fetch는 기본적으로 promise then을 2번씀, res에 state가 넘어온다
+                return res.json();
+            }).then(function(list){//data 에 http.response(json)이 넘어온다. json객체로 넘어오기 때문에 Json.parse를 해줄필요가 없다
+                setData(list);
+            }).catch(function(error){
+                alert(`err : ${error}`);
+            });
+        }
+        function setData(list){
+            var containerElem = document.querySelector('#container');
+            console.log(list);
+            var imgUrl = 'https://picsum.photos/id/';
+            list.forEach(function(item){
+                var width = parseInt(item.width*0.1);
+                var height = parseInt(item.height*0.1);
+                var id = item.id;
+
+                var imgElem = document.createElement('img');
+                imgElem.src = imgUrl + id + '/'+width+'/'+height;
+                var testUrl = `https://picsum.photos/id/${id}/${width}/${height}`;
+                console.log(testUrl);
+
+                containerElem.append(imgElem);
+                //appendChild 는 노드를 못넣는다
+            });
+        }
+   </script> 
+</body>
+</html>

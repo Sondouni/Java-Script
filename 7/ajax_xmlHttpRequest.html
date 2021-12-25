@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="getData()">자료 가져오기</button>
+    <div id ="container"></div>
+    <script>
+        /*
+        //javascript 백그라운드에서 결과를 바로 받아서 주는 통신 : Ajax
+            XML Http Request : js 내장객체
+            promise를 사용안하고 콜백으로?
+        */
+        function getData(){
+            var http = new XMLHttpRequest();
+
+            var url = 'https://picsum.photos/v2/list';
+            http.open('get',url);//get방식으로 url을 연결시켜 놓는다
+            http.onreadystatechange = function(e){//onreadystatechange : 속성(맴버필드에 메소드(함수)를 걸어놓는다)
+                //상태가 바뀔때마다 함수를 실행
+                if(e.target.readyState === XMLHttpRequest.DONE){//통신이 완료됏다면
+
+                        var status = e.target.status;
+                        if(status===0||(status>=200&&status<400)){//통신성공
+                            if(status===200){//200이면 통신이 완료되는것임(성공)
+
+                                console.log(http.response);
+                                var list = JSON.parse(http.response);
+                                setData(list);//http.response가 서버에서 받아온 json
+                            }else{//통신오류
+
+                                alert('error to connect');
+                            }
+                        }else{//통신실패
+
+                            alert('fail to connect');
+                        }
+                }
+            }
+            http.send();
+        }
+        function setData(list){
+            var containerElem = document.querySelector('#container');
+            var imgUrl = 'https://picsum.photos/id/';
+            list.forEach(function(item){
+                var width = parseInt(item.width*0.1);
+                var height = parseInt(item.height*0.1);
+                var id = item.id;
+
+                var imgElem = document.createElement('img');
+                imgElem.src = imgUrl + id + '/'+width+'/'+height;
+                var testUrl = `https://picsum.photos/id/${id}/${width}/${height}`;
+                console.log(testUrl);
+
+                containerElem.append(imgElem);
+                //appendChild 는 노드를 못넣는다
+            });
+        }
+       
+    </script>
+</body>
+</html>
